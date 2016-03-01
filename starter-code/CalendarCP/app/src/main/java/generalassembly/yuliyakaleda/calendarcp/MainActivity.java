@@ -29,6 +29,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
   private Button updateEvent;
   private Button deleteEvent;
   private ListView lv;
+  private long eventId;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -122,7 +123,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
 //  3. after inserting the row in the provider, retrieve the id of the event using the method below.
 // Just uncomment the line below. You will need this id to update and delete this event later.
-    long eventId = Long.parseLong(uri.getLastPathSegment());
+    eventId = Long.parseLong(uri.getLastPathSegment());
   }
 
   //This method should return all the events from your calendar from February 29th till March 4th
@@ -169,6 +170,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
   public void update() {
     //TODO: Using the number eventID from the method insertEventInCalendar(), update the event
     // that was added in that method
+
+
 
   }
 
