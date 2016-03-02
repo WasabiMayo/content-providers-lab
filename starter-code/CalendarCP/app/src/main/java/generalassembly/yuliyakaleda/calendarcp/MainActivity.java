@@ -170,14 +170,32 @@ public class MainActivity extends Activity implements View.OnClickListener {
   public void update() {
     //TODO: Using the number eventID from the method insertEventInCalendar(), update the event
     // that was added in that method
+    Uri uri = CalendarContract.Events.CONTENT_URI;
+    String userInput = title.getText().toString();
+    ContentValues contentValues = new ContentValues();
+    contentValues.put(CalendarContract.Events.TITLE, userInput);
 
+    String selection = CalendarContract.Events._ID + " = ?";
+    String[] selectionArgs = new String[] { String.valueOf(eventId) };
 
+    ContentResolver cr = getContentResolver();
+
+    cr.update(uri,contentValues,selection,selectionArgs);
 
   }
 
   public void delete() {
     //TODO: Using the number eventID from the method insertEventInCalendar(), delete the event
     // that was added in that method
+
+    Uri uri = CalendarContract.Events.CONTENT_URI;
+
+    String selection = CalendarContract.Events._ID + " = ?";
+    String[] selectionArgs = new String[] { String.valueOf(eventId)};
+
+    ContentResolver cr = getContentResolver();
+
+    cr.delete(uri,selection,selectionArgs);
   }
 
   @Override
